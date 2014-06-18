@@ -15,6 +15,6 @@ namespace CarsMvc.Models
         
         public int UserProfileId { get; set; }
         [ForeignKey("UserProfileId")]
-        public UserProfile Profile { get; set; }
+        public virtual UserProfile Profile { get; set; }
     }
 }

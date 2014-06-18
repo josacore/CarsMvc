@@ -114,10 +114,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\CarControllerBase.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Data\CarDatabase.cs" />
+    <Compile Include="Data\Context.cs" />
+    <Compile Include="Data\IContext.cs" />
     <Compile Include="Data\IRepository.cs" />
+    <Compile Include="Data\IUserProfileRepository.cs" />
     <Compile Include="Data\IUserRepository.cs" />
     <Compile Include="Data\Repository.cs" />
+    <Compile Include="Data\UserProfileRepository.cs" />
     <Compile Include="Data\UserRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -125,12 +132,28 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ISecurityService.cs" />
+    <Compile Include="Services\IUserProfileService.cs" />
+    <Compile Include="Services\IUserService.cs" />
+    <Compile Include="Services\SecurityService.cs" />
+    <Compile Include="Services\UserProfileService.cs" />
+    <Compile Include="Services\UserService.cs" />
+    <Compile Include="Ui\CarViewPage.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="Content\Template\css\bootstrap-theme.css" />
+    <Content Include="Content\Template\css\bootstrap-theme.min.css" />
+    <Content Include="Content\Template\css\bootstrap.css" />
+    <Content Include="Content\Template\css\bootstrap.min.css" />
+    <Content Include="Content\Template\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\Template\img\car-image-main.jpg" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\jquery.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -142,10 +165,25 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_Layout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\_ViewStart.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Template\css\bootstrap-theme.css.map" />
+    <Content Include="Content\Template\css\bootstrap.css.map" />
+    <Content Include="Content\Template\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\Template\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\Template\fonts\glyphicons-halflings-regular.woff" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
