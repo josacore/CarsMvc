@@ -1,0 +1,51 @@
+﻿@model CarsMvc.Models.User
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+@section LeftPanel{
+    <div class="panel-heading">Edit Profile</div>
+    <div class="panel-body bg-info">
+        <div class="col-xs-12 col-sm-5 col-md-4 col-lg-4"><center><img height="140" width="140" src="/Content/Template/img/user.jpg" alt="user" class="img-circle" style=" margin-top: 7px;"></center></div>
+        <div class="col-xs-12 col-sm-7 col-md-8 col-lg-8">
+            @using (var editForm = Html.BeginForm("edit", "profile", FormMethod.Post, new { @class = "form" }))
+            {
+                @Html.AntiForgeryToken();
+                <div class="form-group @(Html.ViewData.ModelState.IsValidField("Name") ? "" : "has-error has-feedback")">
+                    @Html.LabelFor(m => m.Profile.Name)
+                    @Html.TextBoxFor(m => m.Profile.Name, new { placeholder = "Name", @class = "form-control" })
+                    @if (!Html.ViewData.ModelState.IsValidField("Name"))
+                    {
+                        <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                    }
+                </div>
+                <div class="form-group @(Html.ViewData.ModelState.IsValidField("Username") ? "" : "has-error has-feedback")">
+                    @Html.LabelFor(m => m.Username)
+                    @Html.TextBoxFor(m => m.Username, new { placeholder = "Username", @class = "form-control" })
+                    @if (!Html.ViewData.ModelState.IsValidField("Username"))
+                    {
+                        <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                    }
+                </div>
+                <div class="form-group @(Html.ViewData.ModelState.IsValidField("Email") ? "" : "has-error has-feedback")">
+                    @Html.LabelFor(m => m.Profile.Email)
+                    @Html.TextBoxFor(m => m.Profile.Email, new { placeholder = "Email", @class = "form-control", type="email"})
+                    @if (!Html.ViewData.ModelState.IsValidField("Email"))
+                    {
+                        <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                    }
+                </div>
+                <div class="form-group @(Html.ViewData.ModelState.IsValidField("Bio") ? "" : "has-error has-feedback")">
+                    @Html.LabelFor(m => m.Profile.Bio)
+                    @Html.TextAreaFor(m => m.Profile.Bio, new { placeholder = "Bio", @class = "form-control", rows = "5" })
+                    @if (!Html.ViewData.ModelState.IsValidField("Bio"))
+                    {
+                        <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                    }
+                </div>
+                <button type="submit" class="btn btn-primary">Save</button>
+            }
+        </div>
+    </div>
+}

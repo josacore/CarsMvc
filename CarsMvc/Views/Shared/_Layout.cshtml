@@ -31,12 +31,19 @@
                     var model = (Model as LoginSignupViewModel) ?? new LoginSignupViewModel();  
                     @Html.Partial("_LoginPartial",model);
                 }
-                else {
-                    using (var logoutForm = Html.BeginForm("logoutForm", "account", FormMethod.Post, new { @class="navbar-form navbar-right"}))
-                    { 
-                        @Html.AntiForgeryToken()
-                        <button type="submit" class="btn btn-danger">Logout</button>
-                    }
+                else
+                {
+                    <div class="nav navbar-nav navbar-right">
+                        <ul class="nav navbar-nav">
+                            <li><center><img height="40" width="40" src="/Content/Template/img/user.jpg" alt="user" class="img-circle" style=" margin-top: 7px;"></center></li>
+                            <li>@Html.ActionLink(@Security.GetCurrentUser().Username,"index",new { controller = "profile", action = "index" })
+                        </ul>
+                        @using (var logoutForm = Html.BeginForm("logout", "account", new { controller = "account", action = "logout" }, FormMethod.Post, new { @class = "navbar-form navbar-right" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <button type="submit" class="btn btn-danger">Logout</button>
+                        }
+                    </div>
                 }
             </div>
         </div>
@@ -50,7 +57,7 @@
             </div>
         }
         <div class="row">
-            @if (IsSectionDefined("RightPanel"))
+            @if (IsSectionDefined("LeftPanel"))
             {
                 string columnas = "";
                 if (!Security.IsAuthenticate)
@@ -66,7 +73,7 @@
 
             @RenderBody()
 
-            @if (IsSectionDefined("LeftPanel"))
+            @if (IsSectionDefined("RightPanel"))
             {
                 <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
                     <div class="panel panel-primary">

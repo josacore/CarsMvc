@@ -1,4 +1,5 @@
 ﻿using CarsMvc.Models;
+using CarsMvc.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,6 +30,19 @@ namespace CarsMvc.Services
                 }
             }
             return false;
+        }
+        public User CreateUser(SignupViewModel model,bool login= true)
+        {
+            var user = _users.Create(model.Username,model.Password,new UserProfile(){Email=model.Email},DateTime.Now);
+            if (login)
+            {
+                Login(user.Username);
+            }
+            return user;
+        }
+        public bool DoesUserExits(string username) 
+        {
+            return _users.GetBy(username) != null; 
         }
         public User GetCurrentUser() 
         {

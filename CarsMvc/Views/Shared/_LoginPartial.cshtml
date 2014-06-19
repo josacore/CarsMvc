@@ -12,7 +12,7 @@
     </div>
 
     <div class="form-group @(Html.ViewData.ModelState.IsValidField("Login.Password") ? "" : "has-error has-feedback")">
-        @Html.TextBoxFor(m => m.Login.Password, new { placeholder = "Password", @class = "form-control" })
+        @Html.PasswordFor(m => m.Login.Password, new { placeholder = "Password", @class = "form-control" })
         @if (!Html.ViewData.ModelState.IsValidField("Login.Password"))
         {
             <span class="glyphicon glyphicon-remove form-control-feedback"></span>

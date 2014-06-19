@@ -19,7 +19,12 @@ namespace CarsMvc
                 url: "Account/{action}",
                 defaults: new { controller = "Account", action = "index" }
             );
-
+            //profile
+            routes.MapRoute(
+                name: "Profile",
+                url: "Profile/{action}",
+                defaults: new { controller = "Profile", action = "index" }
+            );
             //create
             routes.MapRoute(
                 name: "userCreate",

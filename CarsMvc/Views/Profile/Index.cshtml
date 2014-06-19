@@ -1,0 +1,19 @@
+﻿@model CarsMvc.Models.User
+
+@{
+    ViewBag.Title = "Profile";
+}
+
+@section LeftPanel{
+    <div class="panel-heading">Profile</div>
+    <div class="panel-body bg-info">
+        <div class="col-xs-12 col-sm-10 col-md-10 col-lg-11"><h2>@Model.Profile.Name</h2></div>
+        <div class="col-xs-12 col-sm-2 col-md-2 col-lg-1">@Html.ActionLink(" Edit", "edit", new { controller = "profile", action = "edit" }, new { @class = "btn btn-info glyphicon glyphicon-edit" })</div>
+        <div class="col-xs-12 col-sm-5 col-md-4 col-lg-4"><center><img height="140" width="140" src="/Content/Template/img/user.jpg" alt="user" class="img-circle" style=" margin-top: 7px;"></center></div>
+        <div class="col-xs-12 col-sm-7 col-md-8 col-lg-8">
+            <h4>@Model.Username</h4>
+            <h4>@Model.Profile.Email</h4>
+            <p>@Model.Profile.Bio</p>
+        </div>
+    </div>
+}

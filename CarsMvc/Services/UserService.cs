@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Helpers;
 
 namespace CarsMvc.Services
 {
@@ -38,7 +39,7 @@ namespace CarsMvc.Services
             var user = new User()
             {
                 Username = username,
-                Password = password,
+                Password = Crypto.HashPassword(password),
                 DateCreated = created ?? DateTime.Now,
                 Profile = profile
             };
