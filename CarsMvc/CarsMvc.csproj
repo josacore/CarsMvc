@@ -114,6 +114,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CarControllerBase.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -139,6 +140,9 @@
     <Compile Include="Services\UserProfileService.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="Ui\CarViewPage.cs" />
+    <Compile Include="ViewModel\LoginSignupViewModel.cs" />
+    <Compile Include="ViewModel\LoginViewModel.cs" />
+    <Compile Include="ViewModel\SignupViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -184,6 +188,12 @@
     <Content Include="Content\Template\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\Template\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\Template\fonts\glyphicons-halflings-regular.woff" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\Landing.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
