@@ -19,21 +19,35 @@
             @using (var signupForm = Html.BeginForm("signup", "account", FormMethod.Post, new { @class = "form" }))
             {
                 @Html.AntiForgeryToken()
-                <div class="form-group">
+                <div class="form-group @(Html.ViewData.ModelState.IsValidField("Signup.Email") ? "" : "has-error has-feedback")">
                     @Html.TextBoxFor(m => m.Signup.Email, new { placeholder = "Email", type = "Email", @class = "form-control" })
+                    @if (!Html.ViewData.ModelState.IsValidField("Signup.Email"))
+                    {
+                        <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                    }
                 </div>
-                <div class="form-group">
+                <div class="form-group  @(Html.ViewData.ModelState.IsValidField("Signup.Username") ? "" : "has-error has-feedback")">
                     @Html.TextBoxFor(m => m.Signup.Username, new { placeholder = "Username", @class = "form-control" })
+                    @if (!Html.ViewData.ModelState.IsValidField("Signup.Username"))
+                    {
+                        <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                    }
                 </div>
-                <div class="form-group">
+                <div class="form-group  @(Html.ViewData.ModelState.IsValidField("Signup.Password") ? "" : "has-error has-feedback")">
                     @Html.PasswordFor(m => m.Signup.Password, new { placeholder = "Password", @class = "form-control" })
+                    @if (!Html.ViewData.ModelState.IsValidField("Signup.Password"))
+                    {
+                        <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                    }
                 </div>
-                <div class="form-group">
+                <div class="form-group  @(Html.ViewData.ModelState.IsValidField("Signup.Password2") ? "" : "has-error has-feedback")">
                     @Html.PasswordFor(m => m.Signup.Password2, new { placeholder = "Confirm Password", @class = "form-control" })
+                    @if (!Html.ViewData.ModelState.IsValidField("Signup.Password2"))
+                    {
+                        <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                    }
                 </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary">SignUp</button>
-                </div>
+                <button type="submit" class="btn btn-primary">SignUp</button>
             }
         </div>
     }
