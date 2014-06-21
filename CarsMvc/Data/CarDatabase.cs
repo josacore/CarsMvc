@@ -15,6 +15,8 @@ namespace CarsMvc.Data
         public DbSet<ModelCar> Models { get; set; }
         public DbSet<BrandCar> Brands { get; set; }
         public DbSet<TypeCar> Types { get; set; }
+        public DbSet<Car> Cars { get; set; }
+        public DbSet<ImageCar> ImageCars { get; set; }
 
         public CarDatabase() : base("CarConnection") { }
 

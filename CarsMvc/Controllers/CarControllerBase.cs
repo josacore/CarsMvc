@@ -12,6 +12,8 @@ namespace CarsMvc.Controllers
     {
         protected IContext DataContext;
         public IUserService Users { get; private set; }
+        public ICarService Cars { get; private set; }
+        public IImageCarService ImageCars { get; private set; }
         public IUserProfileService Profiles { get; private set; }
         public ISecurityService Security { get; private set; }
         public IBrandService Brands { get; private set; }
@@ -22,6 +24,8 @@ namespace CarsMvc.Controllers
         {
             DataContext = new Context();
             Users = new UserService(DataContext);
+            Cars = new CarService(DataContext);
+            ImageCars = new ImageCarService(DataContext);
             Profiles = new UserProfileService(DataContext);
             Security = new SecurityService(Users);
             Brands = new BrandService(DataContext);

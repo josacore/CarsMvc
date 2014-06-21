@@ -12,7 +12,12 @@ namespace CarsMvc
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-
+            //Car
+            routes.MapRoute(
+                name: "Car",
+                url: "Car/{action}",
+                defaults: new { controller = "Car", action = "index" }
+            );
             //Type
             routes.MapRoute(
                 name: "Type",

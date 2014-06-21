@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Car>
+@{
+    ViewBag.Title = "CarList";
+}
+
+@section LeftPanel{
+    <div class="panel-heading">Cars MVC</div>
+    <div class="panel-body ">
+        @if (Security.IsAuthenticate)
+        {
+            @Html.ActionLink("Create Car", "create", new { controller = "car", action = "create" }, new { @class = "btn btn-info" });
+        }
+        @if (Model != null)
+        {
+            <hr />
+            foreach (var car in Model)
+            {
+                <p>Model: @car.ModelCar.Name</p>
+                <p>Year: @car.Year</p>
+                <p>Brand: @car.ModelCar.Brand.Name</p>
+                <p>Type: @car.TypeCar</p>
+                <p>Color: @car.Color</p>
+                <p>Email: @car.Email</p>
+                <p>Comment: @car.Comment</p>
+                <hr />
+            }
+        }
+    </div>
+}

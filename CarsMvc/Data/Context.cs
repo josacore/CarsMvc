@@ -15,7 +15,9 @@ namespace CarsMvc.Data
                     IUserProfileRepository profiles = null,
                     IModelRepository models = null,
                     IBrandRepository brands = null,
-                    ITypeRepository types =null)
+                    ITypeRepository types =null,
+                    ICarRepository cars =null,
+                    IImageCarRepository imageCars =null)
         {
             _db = context ?? new CarDatabase();
             Users = users ?? new UserRepository(_db,true);
@@ -23,12 +25,16 @@ namespace CarsMvc.Data
             Models = models ?? new ModelRepository(_db, true);
             Brands = brands ?? new BrandRepository(_db, true);
             Types = types ?? new TypeRepository(_db, true);
+            Cars = cars ?? new CarRepository(_db, true);
+            ImageCars = imageCars ?? new ImageCarRepository(_db, true);
         }
         public IBrandRepository Brands { get; private set; }
         public IModelRepository Models { get; private set; }
         public IUserRepository Users { get; private set; }
         public IUserProfileRepository Profiles{ get; private set; }
         public ITypeRepository Types { get; private set; }
+        public ICarRepository Cars { get; private set; }
+        public IImageCarRepository ImageCars { get; private set; }
 
         public int SaveChanges()
         {

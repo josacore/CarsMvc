@@ -8,6 +8,8 @@ namespace CarsMvc.Data
     public interface IContext :IDisposable
     {
         IBrandRepository Brands { get; }
+        ICarRepository Cars { get; }
+        IImageCarRepository ImageCars { get; }
         IModelRepository Models { get; }
         IUserRepository Users { get; }
         ITypeRepository Types { get; }

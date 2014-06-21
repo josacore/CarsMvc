@@ -13,6 +13,8 @@ namespace CarsMvc.Ui
     {
         protected IContext DataContext;
         public User CurrentUser { get; set; }
+        public ICarService Cars { get; set; }
+        public IImageCarService ImageCars { get; set; }
         public IUserService Users { get; set; }
         public IModelService Models { get; set; }
         public IBrandService Brands { get; set; }
@@ -23,6 +25,8 @@ namespace CarsMvc.Ui
         {
             DataContext = new Context();
             Users = new UserService(DataContext);
+            Cars = new CarService(DataContext);
+            ImageCars = new ImageCarService(DataContext);
             Models = new ModelService(DataContext);
             Brands = new BrandService(DataContext);
             Types = new TypeService(DataContext);
@@ -35,6 +39,8 @@ namespace CarsMvc.Ui
     {
         protected IContext DataContext;
         public User CurrentUser { get; set; }
+        public ICarService Cars { get; set; }
+        public IImageCarService ImageCars { get; set; }
         public IUserService Users { get; set; }
         public IModelService Models { get; set; }
         public IBrandService Brands { get; set; }
@@ -45,6 +51,8 @@ namespace CarsMvc.Ui
         {
             DataContext = new Context();
             Users = new UserService(DataContext);
+            Cars = new CarService(DataContext);
+            ImageCars = new ImageCarService(DataContext);
             Models = new ModelService(DataContext);
             Brands = new BrandService(DataContext);
             Types = new TypeService(DataContext);
