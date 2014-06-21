@@ -10,22 +10,23 @@ namespace CarsMvc.Data
     {
         private readonly DbContext _db;
 
-        public Context(DbContext context = null, IUserRepository users = null,IUserProfileRepository profiles = null)
+        public Context(DbContext context = null, 
+                    IUserRepository users = null,
+                    IUserProfileRepository profiles = null,
+                    IModelRepository models = null,
+                    IBrandRepository brands = null)
         {
             _db = context ?? new CarDatabase();
             Users = users ?? new UserRepository(_db,true);
             Profiles = profiles ?? new UserProfileRepository(_db, true);
+            Models = models ?? new ModelRepository(_db, true);
+            Brands = brands ?? new BrandRepository(_db, true);
         }
-        public IUserRepository Users
-        { 
-            get;
-            private set;
-        }
-        public IUserProfileRepository Profiles
-        {
-            get;
-            private set;
-        }
+        public IBrandRepository Brands { get; private set; }
+        public IModelRepository Models { get; private set; }
+        public IUserRepository Users { get; private set; }
+        public IUserProfileRepository Profiles{ get; private set; }
+
         public int SaveChanges()
         {
             return _db.SaveChanges();

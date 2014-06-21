@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CarsMvc.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -22,19 +23,25 @@ namespace CarsMvc.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
-            Models.User user = Security.GetCurrentUser();
-            return View(user);
+            Models.UserProfile profile = Profiles.GetBy(Security.GetCurrentUser().UserProfileId);
+            return View(new EditProfileViewModel() { 
+                ID = profile.ID,
+                Email = profile.Email,
+                Name = profile.Name,
+                Bio = profile.Bio
+            });
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Models.User model) {
+        public ActionResult Edit(EditProfileViewModel model) {
             if (!Security.IsAuthenticate) {
                 return RedirectToAction("index", "Home");
             }
             if (!ModelState.IsValid) {
                 return View("Edit",model);
             }
-            return View();
+            Profiles.Update(model);
+            return RedirectToAction("Index", "Profile");
         }
     }
 }

@@ -7,9 +7,10 @@ using System.Web;
 
 namespace CarsMvc.Services
 {
-    public interface IUserProfileService
+    public interface IModelService
     {
-        UserProfile GetBy(int id);
-        void Update(EditProfileViewModel model);
+        IEnumerable<Model> All();
+        Model Create(ModelCreateViewModel model);
+        bool DoesModelExists(string name);
     }
 }

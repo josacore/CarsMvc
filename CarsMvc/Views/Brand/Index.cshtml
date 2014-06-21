@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Brand>
+@{
+    ViewBag.Title = "Index";
+}
+
+@section LeftPanel{
+    <div class="panel-heading">Brands</div>
+    <div class="panel-body ">
+        @if (Security.IsAuthenticate)
+        {
+            @Html.ActionLink("Create Brand", "create", new { controller = "brand", action = "create" }, new { @class = "btn btn-info" });
+        }
+        @if (Model != null) { 
+            <hr />
+            foreach (var brand in Model)
+            {
+                <p>Name: @brand.Name</p>
+                if (brand.UrlImage != null) {
+                    <p><img src="@Url.Content(brand.UrlImage)" alt="name"/></p>
+                }
+                <p>Models: @brand.Models.Count</p>
+                <p>Description: @brand.Description </p>
+                <hr />
+            }
+        }
+    </div>
+}

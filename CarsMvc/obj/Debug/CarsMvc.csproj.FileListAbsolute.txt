@@ -30,3 +30,5 @@ C:\Users\JosimarSantiago\documents\visual studio 2013\Projects\CarsMvc\CarsMvc\b
 C:\Users\JosimarSantiago\documents\visual studio 2013\Projects\CarsMvc\CarsMvc\bin\System.Web.WebPages.Razor.xml
 C:\Users\JosimarSantiago\documents\visual studio 2013\Projects\CarsMvc\CarsMvc\obj\Debug\CarsMvc.dll
 C:\Users\JosimarSantiago\documents\visual studio 2013\Projects\CarsMvc\CarsMvc\obj\Debug\CarsMvc.pdb
+C:\Users\JosimarSantiago\documents\visual studio 2013\Projects\CarsMvc\CarsMvc\obj\Debug\CarsMvc.Migrations.InitialCreate.resources
+C:\Users\JosimarSantiago\documents\visual studio 2013\Projects\CarsMvc\CarsMvc\obj\Debug\CarsMvc.csproj.GenerateResource.Cache

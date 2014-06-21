@@ -1,0 +1,26 @@
+﻿@model IEnumerable<Model>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@section LeftPanel{
+    <div class="panel-heading">Models</div>
+    <div class="panel-body ">
+        @if (Security.IsAuthenticate)
+        {
+            @Html.ActionLink("Create Model", "create", new { controller = "model", action = "create" }, new { @class = "btn btn-info" });
+        }
+        @if (Model != null)
+        {
+            <hr />
+            foreach (var item in Model)
+            {
+                <p>Name: @item.Name</p>
+                <p>Description: @item.Description</p>
+                <p>Brand:  @item.Brand.Name</p>
+                <hr />
+            }
+        }
+    </div>
+}

@@ -8,8 +8,14 @@
         body {
             padding-top: 70px;
         }
-        .has-feedback .form-control-feedback {
+        .has-feedback .form-control-feedback{
             top: 0px;
+        }
+        .edit-profile .form-control-feedback{
+            top: 25px;
+        }
+        .input-file {
+            height:200px;
         }
     </style>
 </head>
@@ -26,17 +32,23 @@
                 @Html.ActionLink("Cars Mvc", "index", new { controller = "home", action = "index" }, new { @class = "navbar-brand" })
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <div class="nav navbar-nav navbar-left">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Models", "index", new { controller = "Model", aciton = "index" }, null)</li>
+                        <li>@Html.ActionLink("Brands", "index", new { controller = "Brand", aciton = "index" }, null)</li>
+                    </ul>
+                </div>
                 @if (!Security.IsAuthenticate)
                 {
-                    var model = (Model as LoginSignupViewModel) ?? new LoginSignupViewModel();  
-                    @Html.Partial("_LoginPartial",model);
+                    var model = (Model as LoginSignupViewModel) ?? new LoginSignupViewModel();
+                    @Html.Partial("_LoginPartial", model);
                 }
                 else
                 {
                     <div class="nav navbar-nav navbar-right">
                         <ul class="nav navbar-nav">
                             <li><center><img height="40" width="40" src="/Content/Template/img/user.jpg" alt="user" class="img-circle" style=" margin-top: 7px;"></center></li>
-                            <li>@Html.ActionLink(@Security.GetCurrentUser().Username,"index",new { controller = "profile", action = "index" })
+                            <li>@Html.ActionLink(@Security.GetCurrentUser().Username, "index", new { controller = "profile", action = "index" })
                         </ul>
                         @using (var logoutForm = Html.BeginForm("logout", "account", new { controller = "account", action = "logout" }, FormMethod.Post, new { @class = "navbar-form navbar-right" }))
                         {
@@ -45,8 +57,8 @@
                         }
                     </div>
                 }
+                </div>
             </div>
-        </div>
     </nav>
     <div class="container theme-showcase">
         
@@ -63,6 +75,13 @@
                 if (!Security.IsAuthenticate)
                 {
                     columnas = "col-xs-12 col-sm-8 col-md-8 col-lg-8";
+                    if (!IsSectionDefined("RightPanel"))
+                    {
+                        columnas = "col-xs-12 col-sm-12 col-md-12 col-lg-12";
+                    }
+                }
+                else {
+                    columnas = "col-xs-12 col-sm-12 col-md-12 col-lg-12";
                 }
                 <div class="@columnas">
                     <div class="panel panel-primary ">

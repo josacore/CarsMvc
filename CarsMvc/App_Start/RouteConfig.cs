@@ -13,7 +13,19 @@ namespace CarsMvc
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            //account
+            //Model
+            routes.MapRoute(
+                name: "Model",
+                url: "Model/{action}",
+                defaults: new { controller = "Model", action = "index" }
+            );
+            //Brand
+            routes.MapRoute(
+                name: "Brand",
+                url: "Brand/{action}",
+                defaults: new { controller = "Brand", action = "index" }
+            );
+            //Account
             routes.MapRoute(
                 name: "Account",
                 url: "Account/{action}",

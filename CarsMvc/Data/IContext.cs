@@ -7,6 +7,8 @@ namespace CarsMvc.Data
 {
     public interface IContext :IDisposable
     {
+        IBrandRepository Brands { get; }
+        IModelRepository Models { get; }
         IUserRepository Users { get; }
         IUserProfileRepository Profiles { get; }
         int SaveChanges();

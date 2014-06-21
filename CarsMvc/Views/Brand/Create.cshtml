@@ -1,0 +1,36 @@
+﻿@model BrandCreateViewModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+@section LeftPanel{
+    <div class="panel-heading">Brands > Create</div>
+    <div class="panel-body ">
+        @using (var editForm = Html.BeginForm("Create", "Brand", new { controller = "Brand", action = "create" }, FormMethod.Post, new { @class = "form", enctype="multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken();
+            <div class="form-group @(Html.ViewData.ModelState.IsValidField("Name") ? "" : "has-error has-feedback") edit-profile">
+                @Html.LabelFor(m => m.Name)
+                @Html.TextBoxFor(m => m.Name, new { placeholder = "Name", @class = "form-control" })
+                @if (!Html.ViewData.ModelState.IsValidField("Name"))
+                {
+                    <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                }
+            </div>
+            <div class="form-group @(Html.ViewData.ModelState.IsValidField("Description") ? "" : "has-error has-feedback") edit-profile">
+                @Html.LabelFor(m => m.Description)
+                @Html.TextAreaFor(m => m.Description, new { placeholder = "Description", @class = "form-control", rows = "3" })
+                @if (!Html.ViewData.ModelState.IsValidField("Description"))
+                {
+                    <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                }
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.ImageUploaded)
+                @Html.TextBoxFor(m => m.ImageUploaded, new { @class = "form-control input-file", type = "file" })
+            </div>
+            <button type="submit" class="btn btn-primary">Create</button>
+        }
+    </div>
+}
