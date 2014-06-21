@@ -6,7 +6,7 @@ using System.Web;
 
 namespace CarsMvc.Data
 {
-    public interface IModelRepository : IRepository<ModelCar>
+    public interface ITypeRepository : IRepository<TypeCar>
     {
     }
 }

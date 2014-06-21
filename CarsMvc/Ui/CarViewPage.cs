@@ -16,14 +16,16 @@ namespace CarsMvc.Ui
         public IUserService Users { get; set; }
         public IModelService Models { get; set; }
         public IBrandService Brands { get; set; }
+        public ITypeService Types { get; set; }
         public ISecurityService Security { get; set; }
-
+        
         public CarViewPage()
         {
             DataContext = new Context();
             Users = new UserService(DataContext);
             Models = new ModelService(DataContext);
             Brands = new BrandService(DataContext);
+            Types = new TypeService(DataContext);
             Security = new SecurityService(Users);
             CurrentUser = Security.GetCurrentUser();
 
@@ -36,6 +38,7 @@ namespace CarsMvc.Ui
         public IUserService Users { get; set; }
         public IModelService Models { get; set; }
         public IBrandService Brands { get; set; }
+        public ITypeService Types { get; set; }
         public ISecurityService Security { get; set; }
 
         public CarViewPage()
@@ -44,6 +47,7 @@ namespace CarsMvc.Ui
             Users = new UserService(DataContext);
             Models = new ModelService(DataContext);
             Brands = new BrandService(DataContext);
+            Types = new TypeService(DataContext);
             Security = new SecurityService(Users);
             CurrentUser = Security.GetCurrentUser();
 

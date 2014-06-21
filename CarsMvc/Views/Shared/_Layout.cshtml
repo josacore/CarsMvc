@@ -34,8 +34,9 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <div class="nav navbar-nav navbar-left">
                     <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Models", "index", new { controller = "Model", aciton = "index" }, null)</li>
                         <li>@Html.ActionLink("Brands", "index", new { controller = "Brand", aciton = "index" }, null)</li>
+                        <li>@Html.ActionLink("Models", "index", new { controller = "Model", aciton = "index" }, null)</li>
+                        <li>@Html.ActionLink("Types", "index", new { controller = "Type", aciton = "index" }, null)</li>
                     </ul>
                 </div>
                 @if (!Security.IsAuthenticate)

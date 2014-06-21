@@ -16,6 +16,7 @@ namespace CarsMvc.Controllers
         public ISecurityService Security { get; private set; }
         public IBrandService Brands { get; private set; }
         public IModelService Models { get; private set; }
+        public ITypeService Types { get; private set; }
 
         public CarControllerBase()
         {
@@ -25,6 +26,7 @@ namespace CarsMvc.Controllers
             Security = new SecurityService(Users);
             Brands = new BrandService(DataContext);
             Models = new ModelService(DataContext);
+            Types = new TypeService(DataContext);
         }
         protected override void Dispose(bool disposing)
         {

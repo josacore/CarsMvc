@@ -10,8 +10,8 @@ namespace CarsMvc.Services
 {
     public interface IBrandService
     {
-        IEnumerable<Brand> All();
-        Brand Create(BrandCreateViewModel model);
+        IEnumerable<BrandCar> All();
+        BrandCar Create(BrandCreateViewModel model);
         bool DoesBrandExists(string Name);
     }
 }

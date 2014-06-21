@@ -7,10 +7,9 @@ using System.Web;
 
 namespace CarsMvc.Services
 {
-    public interface IModelService
+    public interface ITypeService
     {
-        IEnumerable<ModelCar> All();
-        ModelCar Create(ModelCreateViewModel model);
-        bool DoesModelExists(string name);
+        IEnumerable<TypeCar> All();
+        TypeCar Create(TypeCreateViewModel model);
     }
 }

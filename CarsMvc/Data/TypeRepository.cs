@@ -7,9 +7,9 @@ using System.Web;
 
 namespace CarsMvc.Data
 {
-    public class BrandRepository : Repository<BrandCar>, IBrandRepository
+    public class TypeRepository : Repository<TypeCar>,ITypeRepository
     {
-        public BrandRepository(DbContext context,bool sharedContext) : base(context,sharedContext)
+        public TypeRepository(DbContext context,bool sharedContext) : base(context,sharedContext)
         {}
     }
 }

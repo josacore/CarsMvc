@@ -17,15 +17,15 @@ namespace CarsMvc.Services
             _context = context;
             _models = context.Models;
         }
-        public IEnumerable<Models.Model> All()
+        public IEnumerable<Models.ModelCar> All()
         {
             return _models.All().ToArray();
         }
 
 
-        public Models.Model Create(ViewModel.ModelCreateViewModel model)
+        public Models.ModelCar Create(ViewModel.ModelCreateViewModel model)
         {
-            var itemModel = new Model() 
+            var itemModel = new ModelCar() 
             { 
                 Name = model.Name,
                 Description = model.Description,

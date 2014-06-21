@@ -1,13 +1,13 @@
-﻿@model ModelCreateViewModel
+﻿@model TypeCreateViewModel
 
 @{
     ViewBag.Title = "Create";
 }
 
 @section LeftPanel{
-    <div class="panel-heading">Models > Create</div>
+    <div class="panel-heading">Types > Create</div>
     <div class="panel-body ">
-        @using (var createForm = Html.BeginForm("Create", "Model", new { controller = "Model", action = "create" }, FormMethod.Post, new { @class = "form"}))
+        @using (var createForm = Html.BeginForm("Create", "Type", new { controller = "Type", action = "create" }, FormMethod.Post, new { @class = "form" }))
         {
             @Html.AntiForgeryToken();
             <div class="form-group @(Html.ViewData.ModelState.IsValidField("Name") ? "" : "has-error has-feedback") edit-profile">
@@ -22,14 +22,6 @@
                 @Html.LabelFor(m => m.Description)
                 @Html.TextAreaFor(m => m.Description, new { placeholder = "Description", @class = "form-control", rows = "3" })
                 @if (!Html.ViewData.ModelState.IsValidField("Description"))
-                {
-                    <span class="glyphicon glyphicon-remove form-control-feedback"></span>
-                }
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(m => m.BrandId)
-                @Html.DropDownListFor(m => m.BrandId,Model.Brands)
-                @if (!Html.ViewData.ModelState.IsValidField("Brand"))
                 {
                     <span class="glyphicon glyphicon-remove form-control-feedback"></span>
                 }

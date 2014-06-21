@@ -6,6 +6,6 @@ using System.Web;
 
 namespace CarsMvc.Data
 {
-    public interface IBrandRepository : IRepository<Brand>
+    public interface IBrandRepository : IRepository<BrandCar>
     {}
 }

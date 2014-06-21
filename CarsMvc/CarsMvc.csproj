@@ -120,6 +120,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ModelController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
+    <Compile Include="Controllers\TypeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Data\BrandRepository.cs" />
     <Compile Include="Data\CarDatabase.cs" />
@@ -128,10 +129,12 @@
     <Compile Include="Data\IContext.cs" />
     <Compile Include="Data\IModelRepository.cs" />
     <Compile Include="Data\IRepository.cs" />
+    <Compile Include="Data\ITypeRepository.cs" />
     <Compile Include="Data\IUserProfileRepository.cs" />
     <Compile Include="Data\IUserRepository.cs" />
     <Compile Include="Data\ModelRepository.cs" />
     <Compile Include="Data\Repository.cs" />
+    <Compile Include="Data\TypeRepository.cs" />
     <Compile Include="Data\UserProfileRepository.cs" />
     <Compile Include="Data\UserRepository.cs" />
     <Compile Include="Global.asax.cs">
@@ -143,8 +146,9 @@
       <DependentUpon>201406181346489_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Brand.cs" />
-    <Compile Include="Models\Model.cs" />
+    <Compile Include="Models\BrandCar.cs" />
+    <Compile Include="Models\ModelCar.cs" />
+    <Compile Include="Models\TypeCar.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -152,10 +156,12 @@
     <Compile Include="Services\IBrandService.cs" />
     <Compile Include="Services\IModelService.cs" />
     <Compile Include="Services\ISecurityService.cs" />
+    <Compile Include="Services\ITypeService.cs" />
     <Compile Include="Services\IUserProfileService.cs" />
     <Compile Include="Services\IUserService.cs" />
     <Compile Include="Services\ModelService.cs" />
     <Compile Include="Services\SecurityService.cs" />
+    <Compile Include="Services\TypeService.cs" />
     <Compile Include="Services\UserProfileService.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="Ui\CarViewPage.cs" />
@@ -165,6 +171,7 @@
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\ModelCreateViewModel.cs" />
     <Compile Include="ViewModel\SignupViewModel.cs" />
+    <Compile Include="ViewModel\TypeCreateViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -241,6 +248,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Model\Create.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Type\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Type\Create.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

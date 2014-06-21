@@ -19,17 +19,17 @@ namespace CarsMvc.Services
             _context = context;
             _brands = context.Brands;
         }
-        public IEnumerable<Models.Brand> All()
+        public IEnumerable<Models.BrandCar> All()
         {
             return _brands.All().ToArray();
         }
-        public Models.Brand Create(ViewModel.BrandCreateViewModel model)
+        public Models.BrandCar Create(ViewModel.BrandCreateViewModel model)
         {
             var saveImage = new SaveImage();
             string fileName = Guid.NewGuid().ToString();
             string urlImage = saveImage.ResizeAndSave(fileName, model.ImageUploaded.InputStream, Size.Small, false);
 
-            var brand = new Brand() 
+            var brand = new BrandCar() 
             { 
                 Name = model.Name,
                 Description = model.Description,

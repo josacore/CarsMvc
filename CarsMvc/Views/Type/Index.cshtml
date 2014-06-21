@@ -1,15 +1,15 @@
-﻿@model IEnumerable<ModelCar>
+﻿@model IEnumerable<TypeCar>
 
 @{
     ViewBag.Title = "Index";
 }
 
 @section LeftPanel{
-    <div class="panel-heading">Models</div>
+    <div class="panel-heading">Types</div>
     <div class="panel-body ">
         @if (Security.IsAuthenticate)
         {
-            @Html.ActionLink("Create Model", "create", new { controller = "model", action = "create" }, new { @class = "btn btn-info" });
+            @Html.ActionLink("Create Type", "create", new { controller = "type", action = "create" }, new { @class = "btn btn-info" });
         }
         @if (Model != null)
         {
@@ -18,7 +18,6 @@
             {
                 <p>Name: @item.Name</p>
                 <p>Description: @item.Description</p>
-                <p>Brand:  @item.Brand.Name</p>
                 <hr />
             }
         }
