@@ -12,6 +12,7 @@ namespace CarsMvc.Services
     {
         IEnumerable<BrandCar> All();
         BrandCar Create(BrandCreateViewModel model);
+        BrandCar GetBy(int id);
         bool DoesBrandExists(string Name);
     }
 }

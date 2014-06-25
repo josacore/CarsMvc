@@ -15,8 +15,8 @@ namespace CarsMvc
             //Car
             routes.MapRoute(
                 name: "Car",
-                url: "Car/{action}",
-                defaults: new { controller = "Car", action = "index" }
+                url: "Car/{action}/{id}",
+                defaults: new { controller = "Car", action = "index", id = UrlParameter.Optional }
             );
             //Type
             routes.MapRoute(

@@ -12,7 +12,7 @@
             @Html.AntiForgeryToken();
             <div class="form-group @(Html.ViewData.ModelState.IsValidField("TypeCarId") ? "" : "has-error has-feedback") edit-profile">
                 <p>Type </p>
-                @Html.DropDownListFor(m => m.TypeCarId,new SelectList(Types.All(),"ID","Name",null))
+                @Html.DropDownListFor(m => m.TypeId,new SelectList(Types.All(),"ID","Name",null))
                 @if (!Html.ViewData.ModelState.IsValidField("TypeCarId"))
                 {
                     <span class="glyphicon glyphicon-remove form-control-feedback"></span>
@@ -20,16 +20,28 @@
             </div>
             <div class="form-group @(Html.ViewData.ModelState.IsValidField("BrandId") ? "" : "has-error has-feedback") edit-profile">
                 <p>Brand </p>
-                @Html.DropDownListFor(m => m.BrandId,new SelectList(Brands.All(),"ID","Name",null))
+                @Html.DropDownListFor(m => m.BrandId, new SelectList(Brands.All(), "ID", "Name", null), new { id="select-brand"})
                 @if (!Html.ViewData.ModelState.IsValidField("BrandId"))
                 {
                     <span class="glyphicon glyphicon-remove form-control-feedback"></span>
                 }
             </div>
+
             
+            <div class="form-group @(Html.ViewData.ModelState.IsValidField("ModelId") ? "" : "has-error has-feedback") edit-profile">
+                <p>Model </p>
+                <div id="div-model">
+                </div>
+                @if (!Html.ViewData.ModelState.IsValidField("ModelId"))
+                {
+                    <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                }
+            </div>
+            
+
             <div class="form-group @(Html.ViewData.ModelState.IsValidField("Color") ? "" : "has-error has-feedback") edit-profile">
                 @Html.LabelFor(m => m.Color)
-                @Html.TextBoxFor(m => m.Color, new { placeholder = "Color", @class = "form-control" })
+                @Html.TextBoxFor(m => m.Color, new { placeholder = "Color", @class = "form-control",type="color" })
                 @if (!Html.ViewData.ModelState.IsValidField("Color"))
                 {
                     <span class="glyphicon glyphicon-remove form-control-feedback"></span>
@@ -37,7 +49,7 @@
             </div>
             <div class="form-group @(Html.ViewData.ModelState.IsValidField("Comment") ? "" : "has-error has-feedback") edit-profile">
                 @Html.LabelFor(m => m.Comment)
-                @Html.TextBoxFor(m => m.Comment, new { placeholder = "Comment", @class = "form-control", rows = "3" })
+                @Html.TextAreaFor(m => m.Comment, new { placeholder = "Comment", @class = "form-control", rows = "3" })
                 @if (!Html.ViewData.ModelState.IsValidField("Comment"))
                 {
                     <span class="glyphicon glyphicon-remove form-control-feedback"></span>
@@ -45,7 +57,7 @@
             </div>
             <div class="form-group @(Html.ViewData.ModelState.IsValidField("DatePublish") ? "" : "has-error has-feedback") edit-profile">
                 @Html.LabelFor(m => m.DatePublish)
-                @Html.TextBoxFor(m => m.DatePublish, new { placeholder = "Date Publish", @class = "form-control", rows = "3" })
+                @Html.TextBoxFor(m => m.DatePublish, new { placeholder = "Date Publish", @class = "form-control", rows = "3" ,type="date"})
                 @if (!Html.ViewData.ModelState.IsValidField("DatePublish"))
                 {
                     <span class="glyphicon glyphicon-remove form-control-feedback"></span>
@@ -53,7 +65,7 @@
             </div>
             <div class="form-group @(Html.ViewData.ModelState.IsValidField("Email") ? "" : "has-error has-feedback") edit-profile">
                 @Html.LabelFor(m => m.Email)
-                @Html.TextBoxFor(m => m.Email, new { placeholder = "Email", @class = "form-control", rows = "3" })
+                @Html.TextBoxFor(m => m.Email, new { placeholder = "Email", @class = "form-control", type="email" })
                 @if (!Html.ViewData.ModelState.IsValidField("Email"))
                 {
                     <span class="glyphicon glyphicon-remove form-control-feedback"></span>
@@ -61,7 +73,7 @@
             </div>
             <div class="form-group @(Html.ViewData.ModelState.IsValidField("HasAirConditioning") ? "" : "has-error has-feedback") edit-profile">
                 @Html.LabelFor(m => m.HasAirConditioning)
-                @Html.TextBoxFor(m => m.HasAirConditioning, new { placeholder = "HasAirConditioning", @class = "form-control", rows = "3" })
+                @Html.EditorFor(m => m.HasAirConditioning, new { placeholder = "HasAirConditioning", @class = "form-control", rows = "3" })
                 @if (!Html.ViewData.ModelState.IsValidField("HasAirConditioning"))
                 {
                     <span class="glyphicon glyphicon-remove form-control-feedback"></span>
@@ -69,13 +81,61 @@
             </div>
             <div class="form-group @(Html.ViewData.ModelState.IsValidField("Year") ? "" : "has-error has-feedback") edit-profile">
                 @Html.LabelFor(m => m.Year)
-                @Html.TextBoxFor(m => m.Year, new { placeholder = "Year", @class = "form-control", rows = "3" })
+                @Html.TextBoxFor(m => m.Year, new { placeholder = "Year", @class = "form-control",type = "number"})
                 @if (!Html.ViewData.ModelState.IsValidField("Year"))
                 {
                     <span class="glyphicon glyphicon-remove form-control-feedback"></span>
                 }
             </div>
+
+            <button type="button" class="btn btn-primary" id="button-add">Add Image</button><br />
+            <div id="div-file-image"></div>
+            
+            
             <button type="submit" class="btn btn-primary">Create</button>
         }
     </div>
+}
+
+@section Scripts{
+    <script>
+        $(function() {
+            $("#select-brand").on("change", function () {
+                var value = $(this).val();
+                console.log("selectiona" + value);
+                $("#div-model").load("/car/ModelCarSelect/"+value);
+            });
+            $("#button-add").on("click", function (e) {
+                e.preventDefault();
+                console.log("hola");
+                var gui = GetRandomGUI();
+                var html = '<div id="editorRow>';
+                html += '<input type="hidden" autoComplete = "off" name = "CarImages.index" value = "' + gui + '"/>';
+                html += 'Image: <input type = "file" name = "CarImages[' + gui + '].ImageUploaded" id = "xyzy" />';
+                html += '<a href="#" class="btn btn-danger deleteRow">Delete</a></div>';
+                $("#div-file-image").append(html);
+            });
+            $(document).on("click", "a.deleteRow", function () {
+                var id = $(this)[0].id;
+                console.log($(this)[0].id);
+                $(this).parents('a.deleteRow').remove();
+                console.log("Eliminando");
+                var gui = GetRandomGUI();
+                var htm = '<div id="editorRow">';
+                htm += '<input type="hidden" autoComplete = "off" name = "CarImages.index" value = "' + gui + '"/>';
+                htm += '<input type="hidden" autoComplete = "off" name = "CarImages[' + gui + '].Id" value="' + id + '"/>';
+                htm += '<input type="hidden" autoComplete = "off" name = "CarImages[' + gui + '].ImageDeleted" value="true"/></div>';
+                $('#div-file-image').append(htm);
+
+                return false;
+            });
+            function GetRandomGUI() {
+                var val = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+                    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+                    return v.toString(16);
+                });
+                return val;
+            }
+        });
+    </script>    
 }

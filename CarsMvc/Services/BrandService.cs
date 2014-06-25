@@ -43,5 +43,8 @@ namespace CarsMvc.Services
         {
             return _brands.Find(b => b.Name == Name) != null ;
         }
+        public BrandCar GetBy(int id) {
+            return _brands.GetBy(id);
+        }
     }
 }

@@ -11,5 +11,11 @@ namespace CarsMvc.Data
     {
         public BrandRepository(DbContext context,bool sharedContext) : base(context,sharedContext)
         {}
+
+
+        public BrandCar GetBy(int id)
+        {
+            return DbSet.SingleOrDefault(b => b.ID == id);
+        }
     }
 }

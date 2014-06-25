@@ -24,6 +24,6 @@ namespace CarsMvc.ViewModel
         [Required]
         public int ModelId { get; set; }
         [Required]
-        public int TypeCarId { get; set; }
+        public int TypeId { get; set; }
     }
 }

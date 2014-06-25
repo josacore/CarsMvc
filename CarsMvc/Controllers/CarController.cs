@@ -38,5 +38,10 @@ namespace CarsMvc.Controllers
             }
             return RedirectToAction("Index", "Car");
         }
+        public ActionResult ModelCarSelect(int id) {
+            var brand = Brands.GetBy(id);
+            var models = brand.Models;
+            return PartialView("_ModelCarSelectPartial",models);
+        }
     }
 }
